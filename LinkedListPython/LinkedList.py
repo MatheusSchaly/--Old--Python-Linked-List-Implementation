@@ -1,6 +1,6 @@
 '''
 Created on Jul 23, 2017
-@author: hsmatheus
+@author: Matheus Schaly
 '''
 
 from __future__ import print_function
@@ -30,7 +30,7 @@ class LinkedList():
     def remove (self, position):
         global head
         temp = head
-        prev = None
+        prev = Node()
         if position == 1:
             head = temp.next
             return
@@ -42,25 +42,26 @@ class LinkedList():
     def reverseList (self):
         global head
         curr = head
-        prev = None
-        next = None
-        while curr.next:
+        prev = Node()
+        next = Node()
+        while next != None:
             next = curr.next
             curr.next = prev
             prev = curr
             curr = next
-        head = prev 
+        head = prev.next
             
     def printList(self):
         global head
         temp = head
-        while temp.next: # Same as temp != None
+        while temp.next: # Same as temp.next != None
             print(temp.data, end = '')
             temp = temp.next
         print('')
     
 myList = LinkedList()
-myList.insert(1, 1) # 2
+myList.insert(1, 1) # 1
+myList.printList() # 1
 myList.insert(2, 2) # 1 2
 myList.printList() # 1 2
 myList.insert(3, 1) # 3 1 2
@@ -79,3 +80,7 @@ myList.insert(5, 2) # 6 5 4
 myList.printList() # 6 5 4
 myList.reverseList() # 4 5 6
 myList.printList() # 4 5 6
+myList.insert(3, 1) # 3 4 5 6
+myList.printList() # 3 4 5 6
+myList.reverseList() # 6 5 4 3
+myList.printList() # 3 4 5 6
